@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class ConsoleServiceImpl implements ConsoleService {
 
-    private final static String CSV_FILENAME = "test-questions.csv";
+    private final static String CSV_FILENAME = "questions.csv";
 
     private final TestQuestionService questionService;
 
