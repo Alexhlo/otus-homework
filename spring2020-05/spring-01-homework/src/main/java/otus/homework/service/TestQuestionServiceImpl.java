@@ -4,7 +4,6 @@ package otus.homework.service;
 import otus.homework.dao.TestQuestionDao;
 import otus.homework.model.TestQuestion;
 
-import java.io.IOException;
 import java.util.List;
 
 public class TestQuestionServiceImpl implements TestQuestionService {
@@ -16,12 +15,12 @@ public class TestQuestionServiceImpl implements TestQuestionService {
     }
 
     @Override
-    public List<TestQuestion> getAllQuestionsFromCsv(String filename) throws IOException {
+    public List<TestQuestion> getAllQuestionsFromCsv(String filename) {
         return testQuestionDao.findAllQuestionFromCsvFile(filename);
     }
 
     @Override
-    public TestQuestion getQuestionByNumberFromCsv(String filename ,Integer number) throws IOException {
+    public TestQuestion getQuestionByNumberFromCsv(String filename, int number) {
         return testQuestionDao.findQuestionByNumberFromCsvFile(filename ,number);
     }
 }

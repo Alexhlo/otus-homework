@@ -9,8 +9,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import otus.homework.model.TestQuestion;
 import otus.homework.service.TestQuestionService;
 
-import java.io.IOException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SpringExtension.class)
@@ -25,15 +23,15 @@ public class QuestionServiceTesting {
     @BeforeAll
     static void initBeans() {
 
-        context = new ClassPathXmlApplicationContext("/test-spring-context.xml");
+        context = new ClassPathXmlApplicationContext("/spring-context.xml");
         service = context.getBean(TestQuestionService.class);
         model = new TestQuestion();
     }
 
     @Test
-    public void getFirstQuestionByNumberFromCsvFile() throws IOException {
+    public void getFirstQuestionByNumberFromCsvFile() {
 
-        String expected = "{questionNumber = 1, question = QuestionOne, answer = AnswerOne}";
+        String expected = "{questionNumber = 1, question = QuestionOneTest, answer = AnswerOneTest}";
 
         model = service.getQuestionByNumberFromCsv(CSV_FILENAME, 0);
 

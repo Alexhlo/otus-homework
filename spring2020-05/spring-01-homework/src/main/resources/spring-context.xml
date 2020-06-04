@@ -14,4 +14,10 @@
                          ref="testQuestionDao"/>
     </bean>
 
+    <bean id="consoleService"
+          class="otus.homework.service.ConsoleServiceImpl">
+        <constructor-arg name="questionService"
+                         ref="testQuestionService"/>
+    </bean>
+
 </beans>

@@ -5,6 +5,7 @@ import otus.homework.model.TestQuestion;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -13,13 +14,18 @@ import java.util.List;
 
 public class CsvReader {
 
-    private final static String TABULATION = "\t";
+    private final static String TABULATION_DELIMITER = "\t";
 
-    public static List<TestQuestion> readTestQuestionsFromCsv(String fileName) throws IOException {
+    public static List<TestQuestion> readTestQuestionsFromCsv(String fileName) {
 
         List<TestQuestion> questionList = new ArrayList<>();
 
-        File file = ResourceUtils.getFile("classpath:" + fileName);
+        File file = null;
+        try {
+            file = ResourceUtils.getFile("classpath:" + fileName);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         mapCsvToModel(questionList, file);
 
@@ -32,7 +38,7 @@ public class CsvReader {
             String line = br.readLine();
 
             while (line != null) {
-                String [] data = line.split(TABULATION);
+                String [] data = line.split(TABULATION_DELIMITER);
 
                 TestQuestion question = createModel(data);
                 questionList.add(question);

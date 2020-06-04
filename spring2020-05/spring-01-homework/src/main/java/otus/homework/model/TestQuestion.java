@@ -2,7 +2,7 @@ package otus.homework.model;
 
 public class TestQuestion {
 
-    private Integer questionNumber;
+    private int questionNumber;
     private String question;
     private String answer;
 
@@ -20,11 +20,11 @@ public class TestQuestion {
 
     }
 
-    public Integer getQuestionNumber() {
+    public int getQuestionNumber() {
         return questionNumber;
     }
 
-    public void setQuestionNumber(Integer questionNumber) {
+    public void setQuestionNumber(int questionNumber) {
         this.questionNumber = questionNumber;
     }
 

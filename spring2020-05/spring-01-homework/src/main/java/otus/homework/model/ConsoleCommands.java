@@ -1,8 +1,8 @@
 package otus.homework.model;
 
-public interface ConsoleCommands {
+public class ConsoleCommands {
 
-    String quit = "/q";
-    String nextQuestion = "/next";
-    String start = "/start";
+    public static final String QUIT = "/q";
+    public static final String NEXT_QUESTION = "/next";
+    public static final String START = "/start";
 }
