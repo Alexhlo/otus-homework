@@ -3,11 +3,12 @@ package otus.spring.homework01;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import otus.homework.dao.TestQuestionDao;
+import otus.homework.dao.TestQuestionDaoSimple;
 import otus.homework.model.TestQuestion;
 import otus.homework.service.TestQuestionService;
+import otus.homework.service.TestQuestionServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -16,15 +17,15 @@ public class QuestionServiceTesting {
 
     private final static String CSV_FILENAME = "test-questions.csv";
 
-    private static ApplicationContext context;
+    private static TestQuestionDao questionDao;
     private static TestQuestionService service;
     private static TestQuestion model;
 
     @BeforeAll
     static void initBeans() {
 
-        context = new ClassPathXmlApplicationContext("/spring-context.xml");
-        service = context.getBean(TestQuestionService.class);
+        questionDao = new TestQuestionDaoSimple();
+        service = new TestQuestionServiceImpl(questionDao);
         model = new TestQuestion();
     }
 
