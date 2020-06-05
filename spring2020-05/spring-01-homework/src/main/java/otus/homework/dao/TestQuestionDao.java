@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface TestQuestionDao {
 
-    TestQuestion findQuestionByNumberFromCsvFile(String filename, Integer number);
-
     List<TestQuestion> findAllQuestionFromCsvFile(String fileName);
+
+    String findQuestion(String filename, Integer number);
+
+    String findAnswerOnQuestion(String filename, int number);
 }

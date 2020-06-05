@@ -1,5 +1,12 @@
 package otus.homework.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class TestQuestion {
 
     private int questionNumber;
@@ -10,46 +17,15 @@ public class TestQuestion {
         this.questionNumber = questionNumber;
     }
 
-    public TestQuestion(Integer questionNumber, String question, String answer) {
+    public TestQuestion(int questionNumber, String question) {
         this.questionNumber = questionNumber;
         this.question = question;
-        this.answer = answer;
-    }
-
-    public TestQuestion() {
-
-    }
-
-    public int getQuestionNumber() {
-        return questionNumber;
-    }
-
-    public void setQuestionNumber(int questionNumber) {
-        this.questionNumber = questionNumber;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
     }
 
     @Override
     public String toString() {
-        return "\n{" +
-                "questionNumber = " + questionNumber +
+        return "\nquestionNumber = " + questionNumber +
                 ", question = " + question +
-                ", answer = " + answer +
-                "}";
+                ", answer = " + answer + ";";
     }
 }

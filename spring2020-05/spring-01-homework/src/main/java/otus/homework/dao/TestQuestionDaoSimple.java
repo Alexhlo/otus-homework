@@ -9,12 +9,17 @@ import static otus.homework.util.CsvReader.readTestQuestionsFromCsv;
 public class TestQuestionDaoSimple implements TestQuestionDao {
 
     @Override
-    public TestQuestion findQuestionByNumberFromCsvFile(String filename, Integer number) {
-        return readTestQuestionsFromCsv(filename).get(number);
+    public List<TestQuestion> findAllQuestionFromCsvFile(String filename){
+        return readTestQuestionsFromCsv(filename);
     }
 
     @Override
-    public List<TestQuestion> findAllQuestionFromCsvFile(String filename){
-        return readTestQuestionsFromCsv(filename);
+    public String findQuestion(String filename, Integer number) {
+        return readTestQuestionsFromCsv(filename).get(number).getQuestion();
+    }
+
+    @Override
+    public String findAnswerOnQuestion(String filename, int number) {
+        return readTestQuestionsFromCsv(filename).get(number).getAnswer();
     }
 }

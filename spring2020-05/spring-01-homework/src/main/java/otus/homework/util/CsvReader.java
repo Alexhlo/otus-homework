@@ -51,7 +51,7 @@ public class CsvReader {
 
     private static TestQuestion createModel(String[] metadata) {
 
-        Integer number = Integer.parseInt(metadata[0]);
+        int number = Integer.parseInt(metadata[0]);
         String question = metadata[1];
         String answer = metadata[2];
 

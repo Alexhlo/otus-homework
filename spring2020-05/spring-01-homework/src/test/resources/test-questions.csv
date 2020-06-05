@@ -1,5 +1,5 @@
-1	QuestionOneTest	AnswerOneTest
-2	QuestionTwoTest	AnswerTwoTest
-3	QuestionThreeTest	AnswerThreeTest
-4	QuestionFourTest	AnswerFourTest
-5	QuestionFiveTest	AnswerFiveTest
+1	1 + 1	2
+2	(1 + 1 * 1 + 1) - 1	2
+3	1 * 1 + 1	2
+4	(9 - 8 * 1) + 1	2
+5	2 is ?	2

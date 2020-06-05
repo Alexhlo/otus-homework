@@ -8,5 +8,7 @@ public interface TestQuestionService {
 
     List<TestQuestion> getAllQuestionsFromCsv(String filename);
 
-    TestQuestion getQuestionByNumberFromCsv(String filename, int number);
+    String getQuestion(String filename, int number);
+
+    String getAnswerOnQuestion(String filename, int number);
 }

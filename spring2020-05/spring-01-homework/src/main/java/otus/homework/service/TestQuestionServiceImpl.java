@@ -1,6 +1,5 @@
 package otus.homework.service;
 
-
 import otus.homework.dao.TestQuestionDao;
 import otus.homework.model.TestQuestion;
 
@@ -20,7 +19,12 @@ public class TestQuestionServiceImpl implements TestQuestionService {
     }
 
     @Override
-    public TestQuestion getQuestionByNumberFromCsv(String filename, int number) {
-        return testQuestionDao.findQuestionByNumberFromCsvFile(filename ,number);
+    public String getQuestion(String filename, int number) {
+        return testQuestionDao.findQuestion(filename, number);
+    }
+
+    @Override
+    public String getAnswerOnQuestion(String filename, int number) {
+        return testQuestionDao.findAnswerOnQuestion(filename, number);
     }
 }
