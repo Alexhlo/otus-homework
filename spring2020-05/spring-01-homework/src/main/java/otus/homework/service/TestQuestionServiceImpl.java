@@ -14,17 +14,17 @@ public class TestQuestionServiceImpl implements TestQuestionService {
     }
 
     @Override
-    public List<TestQuestion> getAllQuestionsFromCsv(String filename) {
-        return testQuestionDao.findAllQuestionFromCsvFile(filename);
+    public List<TestQuestion> getAllQuestionsFromCsv() {
+        return testQuestionDao.findAllQuestionFromCsvFile();
     }
 
     @Override
-    public String getQuestion(String filename, int number) {
-        return testQuestionDao.findQuestion(filename, number);
+    public String getQuestionByNumber(int number) {
+        return testQuestionDao.findQuestionByNumber(number);
     }
 
     @Override
-    public String getAnswerOnQuestion(String filename, int number) {
-        return testQuestionDao.findAnswerOnQuestion(filename, number);
+    public String getAnswerOnQuestionByNumber(int number) {
+        return testQuestionDao.findAnswerOnQuestionByNumber(number);
     }
 }

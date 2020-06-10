@@ -3,8 +3,7 @@ package otus.homework;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import otus.homework.service.ConsoleService;
-import otus.homework.service.TestQuestionService;
+import otus.homework.service.TestingExecutionService;
 
 @ComponentScan
 @Configuration
@@ -14,10 +13,9 @@ public class Application {
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Application.class);
 
-        ConsoleService consoleService = context.getBean(ConsoleService.class);
-        TestQuestionService questionService = context.getBean(TestQuestionService.class);
+        TestingExecutionService testingExecutionService = context.getBean(TestingExecutionService.class);
 
-        consoleService.startConsole(questionService);
+        testingExecutionService.executeStudentTest();
     }
 
 }

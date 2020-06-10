@@ -6,21 +6,19 @@ import otus.homework.model.Student;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class ConsoleServiceImpl implements ConsoleService {
+public class TestingExecutionServiceImpl implements TestingExecutionService {
 
-    private final static String CSV_FILENAME = "questions.csv";
     private static final String NEXT_QUESTION = "/next";
     private static final String END = "/end";
 
     private final TestQuestionService questionService;
 
-    public ConsoleServiceImpl(TestQuestionService questionService) {
+    public TestingExecutionServiceImpl(TestQuestionService questionService) {
         this.questionService = questionService;
     }
 
     @Override
-    public void startConsole(TestQuestionService service) {
-
+    public void executeStudentTest() {
         Scanner scanner = new Scanner(System.in);
         Student student = new Student();
         ResultDto resultDTO = new ResultDto();
@@ -35,19 +33,20 @@ public class ConsoleServiceImpl implements ConsoleService {
 
             System.out.println("Enter the command. Example : /next, /end.\n");
             System.out.println("Start testing!\n");
+
             do {
                 try {
                     switch (scanner.nextLine().trim()) {
                         case NEXT_QUESTION:
-                            nextQuestionConsoleCase(service, student, resultDTO, questionCount, points);
+                            nextQuestionConsoleCase(student, resultDTO, questionCount, points);
                             answer = scanner.nextLine();
-                            if (answer.equals(service.getAnswerOnQuestion(CSV_FILENAME, questionCount))) {
+                            if (answer.equals(questionService.getAnswerOnQuestionByNumber(questionCount))) {
                                 ++points;
                             }
                             ++questionCount;
                             break;
                         case END:
-                            endConsoleCase(service, student, resultDTO);
+                            endConsoleCase(student, resultDTO);
                             pointScale(points);
                             scanner.close();
                             break;
@@ -79,22 +78,22 @@ public class ConsoleServiceImpl implements ConsoleService {
         }
     }
 
-    private void nextQuestionConsoleCase(TestQuestionService service, Student student, ResultDto resultDTO, int questionCount, int points) {
+    private void nextQuestionConsoleCase(Student student, ResultDto resultDTO, int questionCount, int points) {
 
-        long questionListSize = service.getAllQuestionsFromCsv(CSV_FILENAME).size();
+        long questionListSize = questionService.getAllQuestionsFromCsv().size();
         if (questionCount != questionListSize) {
-            System.out.println(String.format("Next question %s: %s", questionCount, service.getQuestion(CSV_FILENAME, questionCount)));
+            System.out.println(String.format("Next question %s: %s", questionCount, questionService.getQuestionByNumber(questionCount)));
         } else {
-            endConsoleCase(service, student, resultDTO);
+            endConsoleCase(student, resultDTO);
             pointScale(points);
         }
     }
 
-    private void endConsoleCase(TestQuestionService service, Student student, ResultDto resultDTO) {
+    private void endConsoleCase(Student student, ResultDto resultDTO) {
 
         System.out.println("Testing is over, your result:");
         resultDTO.setStudent(student);
-        resultDTO.setListTestQuestion(service.getAllQuestionsFromCsv(CSV_FILENAME));
+        resultDTO.setListTestQuestion(questionService.getAllQuestionsFromCsv());
         System.out.println(resultDTO.toString().replace("[", "").replace("]", ""));
     }
 

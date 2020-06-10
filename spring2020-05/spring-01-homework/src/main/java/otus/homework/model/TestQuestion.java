@@ -13,15 +13,6 @@ public class TestQuestion {
     private String question;
     private String answer;
 
-    public TestQuestion(Integer questionNumber) {
-        this.questionNumber = questionNumber;
-    }
-
-    public TestQuestion(int questionNumber, String question) {
-        this.questionNumber = questionNumber;
-        this.question = question;
-    }
-
     @Override
     public String toString() {
         return "\nquestionNumber = " + questionNumber +

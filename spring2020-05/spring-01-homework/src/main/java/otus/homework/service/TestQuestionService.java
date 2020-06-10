@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface TestQuestionService {
 
-    List<TestQuestion> getAllQuestionsFromCsv(String filename);
+    List<TestQuestion> getAllQuestionsFromCsv();
 
-    String getQuestion(String filename, int number);
+    String getQuestionByNumber(int number);
 
-    String getAnswerOnQuestion(String filename, int number);
+    String getAnswerOnQuestionByNumber(int number);
 }
