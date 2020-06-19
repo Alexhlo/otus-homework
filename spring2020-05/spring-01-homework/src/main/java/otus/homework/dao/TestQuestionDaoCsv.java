@@ -15,7 +15,7 @@ public class TestQuestionDaoCsv implements TestQuestionDao {
     }
 
     @Override
-    public List<TestQuestion> findAllQuestionFromCsvFile(){
+    public List<TestQuestion> findAllQuestion(){
         return readTestQuestionsFromCsv(filename);
     }
 

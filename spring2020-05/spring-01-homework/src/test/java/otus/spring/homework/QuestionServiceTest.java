@@ -1,16 +1,13 @@
 package otus.spring.homework;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.commons.logging.Logger;
 import org.junit.platform.commons.logging.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import otus.homework.dao.TestQuestionDao;
 import otus.homework.model.TestQuestion;
 import otus.homework.service.TestQuestionService;
 import otus.spring.homework.config.TestAppConfig;
@@ -25,23 +22,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class QuestionServiceTest {
 
     @Autowired
-    private static AnnotationConfigApplicationContext context;
-    @Autowired
     private TestQuestionService service;
 
     private static final Logger LOG = LoggerFactory.getLogger(QuestionServiceTest.class);
 
-    @BeforeAll
-    static void initBeans() {
-
-        context = new AnnotationConfigApplicationContext(QuestionServiceTest.class);
-        context.getBean(TestQuestionService.class);
-    }
-
     @Test
     void getAllQuestionsFromCsv() {
 
-        List<TestQuestion> questionList = service.getAllQuestionsFromCsv();
+        List<TestQuestion> questionList = service.getAllQuestions();
 
         LOG.info(questionList::toString);
     }

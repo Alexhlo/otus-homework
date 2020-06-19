@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface TestQuestionService {
 
-    List<TestQuestion> getAllQuestionsFromCsv();
+    List<TestQuestion> getAllQuestions();
 
     String getQuestionByNumber(int number);
 

@@ -5,9 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import otus.homework.dao.TestQuestionDao;
 import otus.homework.dao.TestQuestionDaoCsv;
-import otus.homework.service.TestQuestionService;
-import otus.homework.service.TestQuestionServiceImpl;
-import otus.homework.service.TestingExecutionServiceImpl;
+import otus.homework.service.*;
 
 @Configuration
 @ComponentScan
@@ -19,12 +17,17 @@ public class TestAppConfig {
     }
 
     @Bean
-    TestingExecutionServiceImpl consoleService(TestQuestionService questionService) {
-        return new TestingExecutionServiceImpl(questionService);
+    TestingExecutionService testingExecutionService(InputOutputService inputOutputService) {
+        return new TestingExecutionServiceImpl(inputOutputService);
     }
 
     @Bean
     TestQuestionService questionService(TestQuestionDao questionDao) {
         return new TestQuestionServiceImpl(questionDao);
+    }
+
+    @Bean
+    InputOutputService inputOutputService(TestQuestionService questionService){
+        return new InputOutputServiceImpl(questionService);
     }
 }

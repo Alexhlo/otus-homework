@@ -14,8 +14,8 @@ public class TestQuestionServiceImpl implements TestQuestionService {
     }
 
     @Override
-    public List<TestQuestion> getAllQuestionsFromCsv() {
-        return testQuestionDao.findAllQuestionFromCsvFile();
+    public List<TestQuestion> getAllQuestions() {
+        return testQuestionDao.findAllQuestion();
     }
 
     @Override
