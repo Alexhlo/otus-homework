@@ -4,7 +4,7 @@ import otus.homework.model.TestQuestion;
 
 import java.util.List;
 
-import static otus.homework.util.CsvReader.readTestQuestionsFromCsv;
+import static otus.homework.util.CsvReaderUtil.readTestQuestionsFromCsv;
 
 public class TestQuestionDaoCsv implements TestQuestionDao {
 

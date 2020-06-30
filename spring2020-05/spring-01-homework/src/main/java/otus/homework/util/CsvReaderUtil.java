@@ -12,7 +12,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CsvReader {
+public class CsvReaderUtil {
 
     private final static String TABULATION_DELIMITER = "\t";
 

@@ -1,5 +1,6 @@
 package otus.homework.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import otus.homework.dao.TestQuestionDao;
@@ -9,24 +10,27 @@ import otus.homework.service.*;
 @Configuration
 public class AppConfig {
 
+    @Value("${questions.file.name}")
+    private String filename;
+
     @Bean
-    TestQuestionDao questionDao(CsvConfig csvConfig) {
-        return new TestQuestionDaoCsv(csvConfig.getFilename());
+    public TestQuestionDao questionDao() {
+        return new TestQuestionDaoCsv(filename);
     }
 
     @Bean
-    TestingExecutionServiceImpl testingExecutionService(InputOutputService inputOutputService) {
-        return new TestingExecutionServiceImpl(inputOutputService);
+    public TestingExecutionServiceImpl testingExecutionService(TestQuestionService testQuestionService, IOService ioService) {
+        return new TestingExecutionServiceImpl(testQuestionService, ioService);
     }
 
     @Bean
-    TestQuestionService questionService(TestQuestionDao questionDao) {
+    public IOService ioService() {
+        return new ConsoleIOServiceImpl();
+    }
+
+    @Bean
+    public TestQuestionService questionService(TestQuestionDao questionDao) {
         return new TestQuestionServiceImpl(questionDao);
-    }
-
-    @Bean
-    InputOutputService inputOutputService(TestQuestionService questionService){
-        return new InputOutputServiceImpl(questionService);
     }
 
 }
